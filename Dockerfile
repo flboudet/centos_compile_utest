@@ -24,4 +24,4 @@ RUN yum install -y xerces-c-devel.i686 ncurses-libs.i686 libicu.i686 \
                    python-devel.i686 sqlite-devel.i686 openssl-devel.i686 keyutils-libs-devel.i686 \
                    cppunit-devel.i686
 
-RUN yum install -y inkscape doxygen
+RUN yum install -y inkscape doxygen && yum clean all
