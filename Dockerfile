@@ -35,4 +35,4 @@ RUN    cd /tmp \
     && ln -s /usr/lib/jvm/java-1.7.0-openjdk-1.7.0.*/jre/lib/i386 /usr/lib/jvm/jre/lib/i386 \
     && rm -f /tmp/java-*.rpm
 
-RUN yum install -y inkscape doxygen && yum clean all
+RUN yum install -y inkscape doxygen texlive-latex && yum clean all
