@@ -17,7 +17,7 @@ RUN yum install -y python-twisted xerces-c-devel ncurses-libs libicu \
                    python-libs libcap-ng unixODBC-devel libxml2-devel \
                    python-devel sqlite-devel openssl-devel keyutils-libs-devel \
                    libpcap-devel \
-                   cppunit-devel libzip-devel java-1.7.0-openjdk-devel
+                   cppunit-devel libzip-devel java-1.8.0-openjdk-devel
 RUN yum install -y xerces-c-devel.i686 ncurses-libs.i686 libicu.i686 \
                    bzip2-libs.i686 libzip.i686 openmpi.i686  mpich.i686 \
                    readline.i686 python-libs.i686 libcap-ng.i686 \
