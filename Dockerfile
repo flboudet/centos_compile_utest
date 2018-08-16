@@ -32,7 +32,7 @@ RUN    cd /tmp \
     && linux32 yumdownloader java-1.7.0-openjdk \
     && cd / \
     && rpm2cpio /tmp/java-1.7.0-openjdk-*.i686.rpm | cpio -idmv *i386* \
-    && ln -s /usr/lib/jvm/java-1.7.0-openjdk-1.7.0.*/jre/lib/i386 /usr/lib/jvm/jre/lib/i386 \
+    && ln -s /usr/lib/jvm/java-1.7.0-openjdk-1.7.0.*/jre/lib/i386 /usr/lib/jvm/java-1.7.0-openjdk-1.7.0.*.x86_64/jre/lib \
     && rm -f /tmp/java-*.rpm
 
 RUN yum install -y inkscape doxygen texlive-latex && yum clean all
