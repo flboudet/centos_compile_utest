@@ -2,14 +2,18 @@ FROM centos:6
 MAINTAINER The U-TEST Team
 
 # A working C/C++ compiler for 32/64 bits binaries
-RUN yum install -y gcc-c++ glibc-devel libstdc++-devel libgcc
-RUN yum install -y glibc-devel.i686 libstdc++-devel.i686 libgcc.i686
+RUN yum install -y gcc-c++ glibc-devel libstdc++-devel libgcc \
+ && yum clean all
+RUN yum install -y glibc-devel.i686 libstdc++-devel.i686 libgcc.i686 \
+ && yum clean all
 
 # GIT & CMAKE
-RUN yum install -y git cmake ant wget swig createrepo rpm-build
+RUN yum install -y git cmake ant wget swig createrepo rpm-build \
+ && yum clean all
 
 # Some U-TEST dependancies
-RUN yum install -y postgresql postgresql-server postgresql-odbc unixODBC
+RUN yum install -y postgresql postgresql-server postgresql-odbc unixODBC \
+ && yum clean all
 
 # Dependancies for U-TEST Externals
 RUN yum install -y python-twisted xerces-c-devel ncurses-libs libicu \
@@ -17,14 +21,16 @@ RUN yum install -y python-twisted xerces-c-devel ncurses-libs libicu \
                    python-libs libcap-ng unixODBC-devel libxml2-devel \
                    python-devel sqlite-devel openssl-devel keyutils-libs-devel \
                    libpcap-devel \
-                   cppunit-devel libzip-devel java-1.8.0-openjdk-devel
+                   cppunit-devel libzip-devel java-1.8.0-openjdk-devel \
+ && yum clean all
 RUN yum install -y xerces-c-devel.i686 ncurses-libs.i686 libicu.i686 \
                    bzip2-libs.i686 libzip.i686 openmpi.i686  mpich.i686 \
                    readline.i686 python-libs.i686 libcap-ng.i686 \
                    unixODBC-devel.i686 libxml2-devel.i686 \
                    python-devel.i686 sqlite-devel.i686 openssl-devel.i686 keyutils-libs-devel.i686 \
                    libpcap-devel.i686 \
-                   cppunit-devel.i686 libzip-devel.i686
+                   cppunit-devel.i686 libzip-devel.i686 \
+ && yum clean all
 
 # Hackish way to install the 386 versions of the JVM libraries on the 64-bit OS
 RUN    cd /tmp \
@@ -35,4 +41,10 @@ RUN    cd /tmp \
     && ln -s /usr/lib/jvm/java-1.7.0-openjdk-1.7.0.*/jre/lib/i386 /usr/lib/jvm/java-1.7.0-openjdk-1.7.0.*.x86_64/jre/lib \
     && rm -f /tmp/java-*.rpm
 
-RUN yum install -y inkscape doxygen texlive-latex && yum clean all
+RUN yum install -y inkscape doxygen texlive-latex \
+ && yum clean all
+ 
+RUN yum install -y https://archive.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm \
+ && yum install -y lcov \
+ && yum clean all
+
